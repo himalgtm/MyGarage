@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyGarage Collector Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-zinc-900 to-black text-zinc-200 font-mono p-6">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-extrabold text-yellow-400 mb-8 flex items-center">
+      🚗 <span class="ml-2">MyGarage Collector Dashboard</span>
+    </h1>
+
+    <div class="bg-zinc-800/80 border border-yellow-500 rounded-xl p-6 shadow-xl mb-10">
+      <h2 class="text-2xl font-semibold text-yellow-300 mb-4">Add a Car</h2>
+      <form id="carForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm mb-1">Make</label>
+          <input id="make" class="w-full p-2 bg-zinc-900 border border-zinc-700 rounded" placeholder="Toyota" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Model</label>
+          <input id="model" class="w-full p-2 bg-zinc-900 border border-zinc-700 rounded" placeholder="Camry" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Year</label>
+          <input id="year" type="number" class="w-full p-2 bg-zinc-900 border border-zinc-700 rounded" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Engine</label>
+          <input id="engine" class="w-full p-2 bg-zinc-900 border border-zinc-700 rounded" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">VIN</label>
+          <input id="vin" class="w-full p-2 bg-zinc-900 border border-zinc-700 rounded" />
+          <button id="scanVinBtn"
+          type="button"
+          class="mt-2 bg-yellow-600 hover:bg-yellow-500 text-black font-bold px-3 py-1 rounded">
+          📷 Scan VIN
+        </button>
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Mileage</label>
+          <input id="mileage" type="number" class="w-full p-2 bg-zinc-900 border border-zinc-700 rounded" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Last Service</label>
+          <input id="lastService" type="date" class="w-full p-2 bg-zinc-900 border border-zinc-700 rounded" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Fuel Type</label>
+          <select id="fuelType" class="w-full p-2 bg-zinc-900 border border-zinc-700 rounded">
+            <option value="">Select</option>
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Electric">Electric</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm mb-1">Registration Expiry</label>
+          <input id="registrationExpiry" type="date" class="w-full p-2 bg-zinc-900 border border-zinc-700 rounded" />
+        </div>
+        <div class="md:col-span-2 text-right mt-4">
+          <button id="submit-button" type="submit" class="bg-yellow-400 hover:bg-yellow-300 text-black font-bold py-2 px-6 rounded transition">➕ Add Car</button>
+        </div>
+      </form>
+    </div>
+<!-- Camera overlay (hidden by default) -->
+<div id="camModal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden">
+  <div class="bg-zinc-900 p-4 rounded-lg space-y-4">
+    <video id="camStream" autoplay playsinline class="w-72 h-48 bg-zinc-800 rounded"></video>
+    <div class="text-right space-x-2">
+      <button id="captureBtn"
+              class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-4 py-1 rounded">
+        Capture
+      </button>
+      <button id="closeCam"
+              class="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 px-3 py-1 rounded">
+        ✖
+      </button>
+    </div>
+  </div>
+</div>
+
+    <div>
+      <h2 class="text-xl font-semibold text-yellow-300 mb-2">Your Cars</h2>
+      <ul id="carList" class="space-y-4"></ul>
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | MyGarage</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-900 text-white flex items-center justify-center h-screen">
+  <div class="bg-zinc-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h1 class="text-3xl font-bold text-yellow-400 mb-6 text-center">🔐 MyGarage Login</h1>
+    <form onsubmit="event.preventDefault(); login();">
+      <input id="username" type="text" placeholder="Username" class="w-full mb-4 p-2 rounded bg-zinc-700" required />
+      <input id="password" type="password" placeholder="Password" class="w-full mb-4 p-2 rounded bg-zinc-700" required />
+      <button type="submit" class="w-full bg-yellow-400 text-black font-bold py-2 rounded">Login</button>
+    </form>
+    <p class="text-sm mt-4 text-center">Don’t have an account? <a href="register.html" class="text-yellow-300 underline">Register here</a></p>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      fetch('/api/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.authToken) {
+          localStorage.setItem('token', data.authToken);
+          localStorage.setItem('username', data.username);
+         window.location.href = 'dashboard';
+        } else {
+          alert(data.error || "Login failed.");
+        }
+      });
+    }
+  </script>
+</body>
+</html>
