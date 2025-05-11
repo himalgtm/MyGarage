@@ -3,7 +3,7 @@ MyGarage is a clean and minimal web app I built to keep track of the cars. It le
 
 What makes it more fun (and useful) is the Scan VIN feature. Instead of typing out the full 17-character VIN, I can just click a button, open my camera, and it reads the VIN directly from the image using Google Vision OCR. It’s quick, accurate, and saves time.
 
-The app is built using Node.js, Express, and a lightweight file-based database (NeDB). It also uses WebSockets to sync changes across tabs or devices in real time so if I update something on my phone, it instantly updates on my laptop too. The frontend is built with vanilla JavaScript and Tailwind CSS for a simple but sharp retro look.
+The app is built using Node.js, Express, and MongoDB (via MongoDB Compass) running locally to store all the car data. It also uses WebSockets to sync changes across tabs or devices in real time so if I update something on my phone, it instantly updates on my laptop too. The frontend is built with vanilla JavaScript and Tailwind CSS for a simple but sharp retro look.
 
 # How to Run It
 Clone the repo
